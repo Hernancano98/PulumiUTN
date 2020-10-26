@@ -9,7 +9,10 @@ jobs:
       - setup_remote_docker
       - checkout:
           path: ~/PulumiUTN
-      - run: 
+      - run:
+          name: "Install Pulumi SDK"
+          command: curl -fsSL https://get.pulumi.com | sh
+      - run:
           name: "Install Pulumi CLI"
           command: |
               curl -L https://get.pulumi.com/ | bash -s
