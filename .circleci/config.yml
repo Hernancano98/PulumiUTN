@@ -23,4 +23,4 @@ jobs:
       - run:
           name: "Run Pulumi"
           command: |
-            pulumi up --yes --skip-preview
+            pulumi up --yes --skip-preview --stack PulumiUTN/dev --cwd ~/PulumiUTN/Pulumi
