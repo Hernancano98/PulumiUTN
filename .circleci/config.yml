@@ -9,11 +9,6 @@ jobs:
       - setup_remote_docker
       - checkout:
           path: ~/PulumiUTN
-      - run:
-          name: "Install Pulumi SDK"
-          command: |
-              cd Pulumi
-              npm i
       - run: 
           name: "Install Pulumi CLI"
           command: |
@@ -29,4 +24,4 @@ jobs:
       - run:
           name: "Run Pulumi"
           command: |
-            pulumi up --yes --skip-preview --stack PulumiUTN/dev --cwd ~/PulumiUTN/Pulum
+            pulumi up --yes --skip-preview --stack PulumiUTN/dev --cwd ~/PulumiUTN/Pulumi
