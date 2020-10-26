@@ -11,7 +11,9 @@ jobs:
           path: ~/PulumiUTN
       - run:
           name: "Install Pulumi SDK"
-          command: curl -fsSL https://get.pulumi.com | sh
+          command: |
+              npm i @pulumi/pulumi
+              npm i @pulumi/aws
       - run:
           name: "Install Pulumi CLI"
           command: |
