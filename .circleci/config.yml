@@ -1,18 +1,31 @@
 version: 2.1
-orbs:
-  pulumi: pulumi/pulumi@1.0.0
+
 jobs:
   build:
     docker:
-      - image: circleci/node:7.10
-    working_directory: ~/PulumiUTN
+      - image: circleci/node
+    working_directory: ~/PulumiUTN/Pulumi
     steps:
-      - checkout
-      - pulumi/login
+      - checkout:
+          path: ~/PulumiUTN
       - run:
+          name: "Install Pulumi SDK"
           command: |
-            npm install
-            npm run build
-      - pulumi/update:
-          stack: dev
-          cwd: ~/PulumiUTN/Pulumi
+              cd Pulumi
+              npm i
+      - run: 
+          name: "Install Pulumi CLI"
+          command: |
+              curl -L https://get.pulumi.com/ | bash -s
+              # Add to PATH
+              echo 'export PATH=${HOME}/.pulumi/bin:$PATH' >> $BASH_ENV
+              source $BASH_ENV
+      - run:
+          name: "Log into Pulumi"
+          command: |
+            export PULUMI_ACCESS_TOKEN="${PULUMI_ACCESS_TOKEN}"
+            pulumi login --cloud-url https://api.pulumi.com
+      - run:
+          name: "Run Pulumi"
+          command: |
+            pulumi up --yes --skip-preview --stack PulumiUTN/dev --cwd ~/PulumiUTN/Pulumi
