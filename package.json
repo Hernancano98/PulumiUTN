@@ -1,0 +1,19 @@
+{
+  "name": "pulumiutn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hernancano98/PulumiUTN.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hernancano98/PulumiUTN/issues"
+  },
+  "homepage": "https://github.com/Hernancano98/PulumiUTN#readme"
+}
